@@ -118,3 +118,39 @@ run "rejects_empty_tag_key" {
 
   expect_failures = [var.capability_tags]
 }
+
+run "accepts_ipv6_hostname" {
+  command = plan
+
+  variables {
+    hostname = "2001:db8::10"
+  }
+
+  assert {
+    condition     = vra_cloud_account_vsphere.this.hostname == "2001:db8::10"
+    error_message = "A bare IPv6 literal should be accepted as the hostname."
+  }
+}
+
+run "accepts_bracketed_ipv6_hostname" {
+  command = plan
+
+  variables {
+    hostname = "[2001:db8::10]"
+  }
+
+  assert {
+    condition     = vra_cloud_account_vsphere.this.hostname == "[2001:db8::10]"
+    error_message = "A bracketed IPv6 literal should be accepted as the hostname."
+  }
+}
+
+run "rejects_ipv6_hostname_with_port" {
+  command = plan
+
+  variables {
+    hostname = "[2001:db8::10]:443"
+  }
+
+  expect_failures = [var.hostname]
+}

@@ -28,7 +28,7 @@ variable "hostname" {
   description = "The FQDN of the vcenter server (hostname only, no scheme or path)"
 
   validation {
-    condition     = trimspace(var.hostname) != "" && !can(regex("[/:\\s]", var.hostname))
+    condition     = trimspace(var.hostname) != "" && (!can(regex("[/:\\s]", var.hostname)) || can(cidrhost("${trim(var.hostname, "[]")}/128", 0)))
     error_message = "hostname must be a bare FQDN or IP address, without a scheme, port, or path."
   }
 }
