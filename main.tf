@@ -3,7 +3,7 @@ data "vra_region_enumeration_vsphere" "this" {
   username                = var.username
   password                = var.password
   hostname                = var.hostname
-  accept_self_signed_cert = true
+  accept_self_signed_cert = var.accept_self_signed_cert
 }
 
 locals {
