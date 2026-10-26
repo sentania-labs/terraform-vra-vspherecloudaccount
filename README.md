@@ -69,7 +69,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_accept_self_signed_cert"></a> [accept\_self\_signed\_cert](#input\_accept\_self\_signed\_cert) | Accept self-signed vCenter certificates. Applied to both the region enumeration data source and the cloud account resource; set to false to require a certificate trusted by the vRA/Aria Automation host. | `bool` | `true` | no |
-| <a name="input_capability_tags"></a> [capability\_tags](#input\_capability\_tags) | Capability tags to be applied to the Cloud Account, as a list of key/value objects | <pre>list(object({<br>    key   = string<br>    value = string<br>  }))</pre> | `[]` | no |
+| <a name="input_capability_tags"></a> [capability\_tags](#input\_capability\_tags) | Capability tags to be applied to the Cloud Account, as a list of key/value objects | <pre>list(object({<br/>    key   = string<br/>    value = string<br/>  }))</pre> | `[]` | no |
 | <a name="input_description"></a> [description](#input\_description) | A description for the cloud account | `string` | `"Managed by TF - Do not edit!"` | no |
 | <a name="input_enabled_datacenters"></a> [enabled\_datacenters](#input\_enabled\_datacenters) | An array of vSphere Datacenters to enable for automation | `list(string)` | n/a | yes |
 | <a name="input_hostname"></a> [hostname](#input\_hostname) | The FQDN of the vcenter server (hostname only, no scheme or path) | `string` | n/a | yes |
